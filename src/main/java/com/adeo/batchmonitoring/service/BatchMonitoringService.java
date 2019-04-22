@@ -1,23 +1,21 @@
 package com.adeo.batchmonitoring.service;
 
-import com.adeo.batchmonitoring.domain.BatchMonitoringInfo;
-import com.adeo.batchmonitoring.domain.StepInfo;
+import com.adeo.batchmonitoring.domain.BatchMonitoring;
+import com.adeo.batchmonitoring.domain.BatchMonitoringRow;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public abstract class BatchMonitoringService {
 
-    public final BatchMonitoringInfo getMonitoring(){
-        BatchMonitoringInfo batchMonitoringInfo = new BatchMonitoringInfo();
-        batchMonitoringInfo.setStepInfos(new ArrayList<>(findSteps()));
-        batchMonitoringInfo.setContext(context());
-        return batchMonitoringInfo;
+    public final BatchMonitoring getBatchMonitoring(){
+        BatchMonitoring batchMonitoring = new BatchMonitoring();
+        batchMonitoring.setRows(new ArrayList<>(findBatchMonitoringRows()));
+        batchMonitoring.setContext(context());
+        return batchMonitoring;
     }
 
-    protected abstract List<? extends StepInfo> findSteps();
+    protected abstract List<? extends BatchMonitoringRow> findBatchMonitoringRows();
 
     protected abstract String context();
-
 }

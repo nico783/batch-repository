@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class BatchMonitoringInfo {
-    private List<StepInfo> stepInfos;
+public class BatchMonitoring {
+    private List<BatchMonitoringRow> rows;
     private String context;
 }
