@@ -1,9 +1,6 @@
 package com.adeo.batchmonitoring.service;
 
-import com.adeo.batchmonitoring.domain.BatchMonitoring;
-import com.adeo.batchmonitoring.domain.BatchMonitoringRow;
-import com.adeo.batchmonitoring.domain.ExecutionInfo;
-import com.adeo.batchmonitoring.domain.StatisticInfo;
+import com.adeo.batchmonitoring.domain.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -83,6 +80,7 @@ public class BatchMonitoringServiceTest {
         assertEquals("test", batchMonitoring.getContext());
 
         assertEquals(2, batchMonitoring.getBatchMonitoringRows().size());
+        assertEquals(MonitoringType.STEP, batchMonitoring.getBatchMonitoringRows().get(0).getMonitoringType());
         assertEquals(new Long(1L), batchMonitoring.getBatchMonitoringRows().get(0).getStepInfo().getId());
         assertEquals("step1", batchMonitoring.getBatchMonitoringRows().get(0).getStepInfo().getName());
         assertEquals("SUCCESS", batchMonitoring.getBatchMonitoringRows().get(0).getStepInfo().getStatus());
@@ -94,6 +92,7 @@ public class BatchMonitoringServiceTest {
         assertEquals("file-for-test-1", batchMonitoring.getBatchMonitoringRows().get(0).getCustomInfo().get("fileName"));
 
         assertEquals(new Long(2L), batchMonitoring.getBatchMonitoringRows().get(1).getStepInfo().getId());
+        assertEquals(MonitoringType.STEP, batchMonitoring.getBatchMonitoringRows().get(0).getMonitoringType());
         assertEquals("step2", batchMonitoring.getBatchMonitoringRows().get(1).getStepInfo().getName());
         assertEquals("FAIL", batchMonitoring.getBatchMonitoringRows().get(1).getStepInfo().getStatus());
         assertEquals("Test step exit message.", batchMonitoring.getBatchMonitoringRows().get(1).getStepInfo().getExitMessage());
@@ -113,6 +112,7 @@ public class BatchMonitoringServiceTest {
         assertEquals("test", batchMonitoring.getContext());
 
         assertEquals(1, batchMonitoring.getBatchMonitoringRows().size());
+        assertEquals(MonitoringType.STEP, batchMonitoring.getBatchMonitoringRows().get(0).getMonitoringType());
         assertEquals(new Long(1L), batchMonitoring.getBatchMonitoringRows().get(0).getStepInfo().getId());
         assertEquals("step1", batchMonitoring.getBatchMonitoringRows().get(0).getStepInfo().getName());
         assertEquals("SUCCESS", batchMonitoring.getBatchMonitoringRows().get(0).getStepInfo().getStatus());
