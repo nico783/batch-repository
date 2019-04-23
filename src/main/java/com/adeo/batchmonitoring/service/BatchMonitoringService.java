@@ -23,7 +23,7 @@ public abstract class BatchMonitoringService {
      * @return instance du monitoring des batchs.
      */
     public final BatchMonitoring getBatchMonitoring() {
-        return getBatchMonitoringFiltered(batchMonitoringRow -> true);
+        return getBatchMonitoring(batchMonitoringRow -> true);
     }
 
     /**
@@ -32,7 +32,7 @@ public abstract class BatchMonitoringService {
      *
      * @return instance du monitoring des batchs.
      */
-    public final BatchMonitoring getBatchMonitoringFiltered(Predicate<BatchMonitoringRow> predicate) {
+    public final BatchMonitoring getBatchMonitoring(Predicate<BatchMonitoringRow> predicate) {
         BatchMonitoring batchMonitoring = new BatchMonitoring();
         List<? extends BatchMonitoringRow> batchMonitoringRows = findBatchMonitoringRows()
                 .stream()
